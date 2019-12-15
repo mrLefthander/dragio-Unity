@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class DrawLine : MonoBehaviour
 {
@@ -35,11 +36,21 @@ public class DrawLine : MonoBehaviour
                 Draw();
             }
         }
+
     }
 
     private void Draw()
     {
         lineRenderer.SetPosition(0, poin1RectTransform.position);
         lineRenderer.SetPosition(1, poin2RectTransform.position);
+    }
+
+    public void OnMouseDown()
+    {
+        Debug.Log("Mouse Down");
+        foreach (DragPoint dragPoint in dragPoints)
+        {
+            dragPoint.gameObject.SetActive(false);
+        }
     }
 }

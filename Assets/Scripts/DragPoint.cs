@@ -13,6 +13,7 @@ public class DragPoint : MonoBehaviour, IDragHandler, IEndDragHandler
     {
         pointRectTransform = transform.GetComponent<RectTransform>();
         canvas = GetComponentInParent<Canvas>();
+        gameObject.SetActive(false);
     }
 
     public void OnDrag(PointerEventData eventData)
