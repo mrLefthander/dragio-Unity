@@ -10,18 +10,22 @@ public class DrawLine : MonoBehaviour
     RectTransform poin1RectTransform, poin2RectTransform;
     LineRenderer lineRenderer;
     DragPoint[] dragPoints;
+    EdgeCollider2D lineCollider;
 
     void Start()
     {
         lineRenderer = GetComponent<LineRenderer>();
         lineRenderer.positionCount = 2;
-        lineRenderer.useWorldSpace = true;
+
+        lineCollider = GetComponent<EdgeCollider2D>();
 
         poin1RectTransform = linePoint1.GetComponent<RectTransform>();
         poin2RectTransform = linePoint2.GetComponent<RectTransform>();
         Draw();
 
-        dragPoints = GetComponentsInChildren<DragPoint>();
+        dragPoints = GetComponentsInChildren<DragPoint>(true);
+
+        
     }
 
     
@@ -41,8 +45,14 @@ public class DrawLine : MonoBehaviour
 
     private void Draw()
     {
-        lineRenderer.SetPosition(0, poin1RectTransform.position);
-        lineRenderer.SetPosition(1, poin2RectTransform.position);
+        Vector2[] linePointsForCollider = new Vector2[2];
+        linePointsForCollider[0] = poin1RectTransform.localPosition;
+        linePointsForCollider[1] = poin2RectTransform.localPosition;
+
+
+        lineRenderer.SetPosition(0, poin1RectTransform.localPosition);
+        lineRenderer.SetPosition(1, poin2RectTransform.localPosition);
+        lineCollider.points = linePointsForCollider;
     }
 
     public void OnMouseDown()
@@ -50,7 +60,7 @@ public class DrawLine : MonoBehaviour
         Debug.Log("Mouse Down");
         foreach (DragPoint dragPoint in dragPoints)
         {
-            dragPoint.gameObject.SetActive(false);
+            dragPoint.gameObject.SetActive(true);
         }
     }
 }

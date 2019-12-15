@@ -20,7 +20,6 @@ public class DrawBezier : MonoBehaviour
         lineRenderer.useWorldSpace = false;
 
         curveCollider = GetComponent<EdgeCollider2D>();
-        curveCollider.edgeRadius = 0.1f;
 
         poin1RectTransform = linePoint1.GetComponent<RectTransform>();
         poin2RectTransform = linePoint2.GetComponent<RectTransform>();

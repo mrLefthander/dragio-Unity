@@ -133,6 +133,7 @@ GameObject:
   - component: {fileID: 8219258378569626341}
   - component: {fileID: 8546608342391965261}
   - component: {fileID: 1653620923}
+  - component: {fileID: 553934745908173308}
   m_Layer: 5
   m_Name: Line
   m_TagString: Untagged
@@ -266,6 +267,24 @@ LineRenderer:
     generateLightingData: 0
   m_UseWorldSpace: 0
   m_Loop: 0
+--- !u!68 &553934745908173308
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8546608342391965263}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0.1
+  m_Points:
+  - {x: -0.020004272, y: -68.01286}
+  - {x: 446.338, y: -68.01286}
 --- !u!1 &8546608342518050529
 GameObject:
   m_ObjectHideFlags: 0
