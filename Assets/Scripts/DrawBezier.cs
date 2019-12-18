@@ -63,13 +63,4 @@ public class DrawBezier : MonoBehaviour
         float uu = u * u;
         return uu * position1 + 2 * u * t * position2 + tt * position3;
     }
-
-    public void OnMouseDown()
-    {
-        Debug.Log("Mouse Down");
-        foreach (DragPoint dragPoint in dragPoints)
-        {
-            dragPoint.gameObject.SetActive(true);
-        }
-    }
 }

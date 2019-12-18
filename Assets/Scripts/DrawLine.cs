@@ -2,7 +2,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
 public class DrawLine : MonoBehaviour
 {
@@ -25,12 +24,8 @@ public class DrawLine : MonoBehaviour
 
         dragPoints = GetComponentsInChildren<DragPoint>(true);
 
-        
     }
 
-    
-
-    // Update is called once per frame
     void Update()
     {
         foreach (DragPoint dragPoint in dragPoints)
@@ -49,18 +44,9 @@ public class DrawLine : MonoBehaviour
         linePointsForCollider[0] = poin1RectTransform.localPosition;
         linePointsForCollider[1] = poin2RectTransform.localPosition;
 
+        lineCollider.points = linePointsForCollider;
 
         lineRenderer.SetPosition(0, poin1RectTransform.localPosition);
         lineRenderer.SetPosition(1, poin2RectTransform.localPosition);
-        lineCollider.points = linePointsForCollider;
-    }
-
-    public void OnMouseDown()
-    {
-        Debug.Log("Mouse Down");
-        foreach (DragPoint dragPoint in dragPoints)
-        {
-            dragPoint.gameObject.SetActive(true);
-        }
     }
 }

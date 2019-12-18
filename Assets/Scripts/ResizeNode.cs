@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class ResizeNode: MonoBehaviour, IDragHandler, IPointerDownHandler
+public class ResizeNode: MonoBehaviour, IDragHandler, IPointerDownHandler, IEndDragHandler
 {
     [SerializeField] Vector2 minSize;
     [SerializeField] Vector2 maxSize;
@@ -11,10 +11,13 @@ public class ResizeNode: MonoBehaviour, IDragHandler, IPointerDownHandler
     RectTransform nodeRectTransform;
     Vector2 currentPointerPosition;
     Vector2 previousPointerPosition;
+    BoxCollider2D collider;
 
-    private void Awake()
+    void Start()
     {
         nodeRectTransform = transform.parent.GetComponent<RectTransform>();
+        collider = transform.parent.GetComponent<BoxCollider2D>();
+
     }
 
     public void OnPointerDown(PointerEventData eventData)
@@ -38,5 +41,11 @@ public class ResizeNode: MonoBehaviour, IDragHandler, IPointerDownHandler
         nodeRectTransform.sizeDelta = sizeDelta;
 
         previousPointerPosition = currentPointerPosition;
+    }
+
+    public void OnEndDrag(PointerEventData eventData)
+    {
+        collider.size = nodeRectTransform.sizeDelta;
+        collider.offset = new Vector2(nodeRectTransform.sizeDelta.x / 2, -nodeRectTransform.sizeDelta.y / 2);
     }
 }

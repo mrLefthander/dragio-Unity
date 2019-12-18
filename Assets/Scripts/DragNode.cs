@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class DragNode: MonoBehaviour, IDragHandler, IPointerDownHandler, IDeselectHandler
+public class DragNode: MonoBehaviour, IDragHandler, IPointerDownHandler
 {
     GameObject resizePoint;
     RectTransform nodeRectTransform;
@@ -27,8 +27,4 @@ public class DragNode: MonoBehaviour, IDragHandler, IPointerDownHandler, IDesele
         resizePoint.SetActive(true);
     }
 
-    public void OnDeselect(BaseEventData eventData)
-    {
-        resizePoint.SetActive(false);
-    }
 }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class DragPoint : MonoBehaviour, IDragHandler, IEndDragHandler
+public class DragPoint : MonoBehaviour, IDragHandler, IEndDragHandler, IPointerDownHandler
 {
     RectTransform pointRectTransform;
     Canvas canvas;
@@ -13,7 +13,9 @@ public class DragPoint : MonoBehaviour, IDragHandler, IEndDragHandler
     {
         pointRectTransform = transform.GetComponent<RectTransform>();
         canvas = GetComponentInParent<Canvas>();
+        ResizeNode nodeResizePoint = GetComponentInChildren<ResizeNode>();
         gameObject.SetActive(false);
+       
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -30,5 +32,10 @@ public class DragPoint : MonoBehaviour, IDragHandler, IEndDragHandler
     public bool IsDragged()
     {
         return isDragged;
+    }
+
+    public void OnPointerDown(PointerEventData eventData)
+    {
+        pointRectTransform.SetAsLastSibling();
     }
 }
