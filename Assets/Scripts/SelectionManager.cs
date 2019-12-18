@@ -20,8 +20,6 @@ public class SelectionManager : MonoBehaviour
         {
             Collider2D clickedCollider = Physics2D.OverlapPoint(Camera.main.ScreenToWorldPoint(Input.mousePosition), selectableLayer);
 
-            
-
             if (clickedCollider != null)
             {
                 ClickOn clicked = clickedCollider.gameObject.GetComponent<ClickOn>();
@@ -32,6 +30,11 @@ public class SelectionManager : MonoBehaviour
                 clicked.Select(true);
                 currentlySelected = clicked;
             }
+        }
+        if (Input.GetKeyDown(KeyCode.Delete) && currentlySelected != null)
+        {
+            currentlySelected.gameObject.SetActive(false);
+            Destroy(currentlySelected.gameObject);
         }
     }
 }
