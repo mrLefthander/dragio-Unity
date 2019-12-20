@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class DragNode: MonoBehaviour, IDragHandler, IPointerDownHandler
+public class DragNode: MonoBehaviour, IDragHandler
 {
     GameObject resizePoint;
     RectTransform nodeRectTransform;
@@ -22,9 +22,6 @@ public class DragNode: MonoBehaviour, IDragHandler, IPointerDownHandler
         nodeRectTransform.anchoredPosition += eventData.delta / canvas.scaleFactor;
     }
 
-    public void OnPointerDown(PointerEventData eventData)
-    {
-        resizePoint.SetActive(true);
-    }
+
 
 }

@@ -15,7 +15,7 @@ public class DrawBezier : MonoBehaviour
     private int numPoints = 100;
     void Start()
     {
-        lineRenderer = GetComponentInChildren<LineRenderer>();
+        lineRenderer = GetComponent<LineRenderer>();
         lineRenderer.positionCount = numPoints;
         lineRenderer.useWorldSpace = false;
 

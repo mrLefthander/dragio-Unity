@@ -31,10 +31,16 @@ public class SelectionManager : MonoBehaviour
                 currentlySelected = clicked;
             }
         }
+
         if (Input.GetKeyDown(KeyCode.Delete) && currentlySelected != null)
         {
             currentlySelected.gameObject.SetActive(false);
             Destroy(currentlySelected.gameObject);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape) && currentlySelected != null)
+        {
+            currentlySelected.Select(false);
         }
     }
 }
